@@ -1,9 +1,7 @@
 ﻿
 using Application.Dto;
-using Application.Interfaces;
 using AutoMapper;
 using CleanArchitecture_Application.Interfaces;
-using Domain.Entities;
 using MediatR;
 
 namespace CleanArchitecture_Application.Features.Queries.GetById
@@ -14,9 +12,9 @@ namespace CleanArchitecture_Application.Features.Queries.GetById
     }
     public class GetCategoryByIdHandler : IRequestHandler<GetCategoryById, CategoryDto>
     {
-        private readonly IGenericRepository<Category> _categoryRepository;
+        private readonly ICategoryRepository _categoryRepository;
         private readonly IMapper _mapper;
-        public GetCategoryByIdHandler(IGenericRepository<Category> categoryRepository, IMapper mapper)
+        public GetCategoryByIdHandler(ICategoryRepository categoryRepository, IMapper mapper)
         {
             _categoryRepository = categoryRepository;
             _mapper = mapper;

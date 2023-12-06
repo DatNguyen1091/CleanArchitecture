@@ -15,9 +15,9 @@ namespace CleanArchitecture_Application.Features.Queries.GetAll
     }
     public class GetAllCategoryHandler : IRequestHandler<GetAllCategory, ICollection<CategoryDto>>
     {
-        private readonly IGenericRepository<Category> _categoryRepository;
+        private readonly ICategoryRepository _categoryRepository;
         private readonly IMapper _mapper;
-        public GetAllCategoryHandler(IGenericRepository<Category> categoryRepository, IMapper mapper)
+        public GetAllCategoryHandler(ICategoryRepository categoryRepository, IMapper mapper)
         {
             _categoryRepository = categoryRepository;
             _mapper = mapper;

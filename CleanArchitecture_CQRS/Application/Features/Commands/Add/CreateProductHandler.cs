@@ -27,9 +27,9 @@ namespace CleanArchitecture_Application.Features.Commands.Add
 
     public class CreateProductHandler : IRequestHandler<CreateProduct, ProductDto>
     {
-        private readonly IGenericRepository<Product> _productRepository;
+        private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
-        public CreateProductHandler(IGenericRepository<Product> productRepository, IMapper mapper)
+        public CreateProductHandler(IProductRepository productRepository, IMapper mapper)
         {
             _productRepository = productRepository;
             _mapper = mapper;

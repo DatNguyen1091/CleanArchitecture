@@ -15,9 +15,9 @@ namespace CleanArchitecture_Application.Features.Queries.GetAll
 
     public class GetAllProductHandler : IRequestHandler<GetAllProduct, ICollection<ProductDto>>
     {
-        private readonly IGenericRepository<Product> _productRepository;
+        private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
-        public GetAllProductHandler(IGenericRepository<Product> productRepository, IMapper mapper)
+        public GetAllProductHandler(IProductRepository productRepository, IMapper mapper)
         {
             _productRepository = productRepository;
             _mapper = mapper;

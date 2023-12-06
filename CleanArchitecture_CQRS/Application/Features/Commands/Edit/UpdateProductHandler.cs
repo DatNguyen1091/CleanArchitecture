@@ -29,9 +29,9 @@ namespace CleanArchitecture_Application.Features.Commands.Edit
 
     public class UpdateProductHandler : IRequestHandler<UpdateProduct, ProductDto>
     {
-        private readonly IGenericRepository<Product> _productRepository;
+        private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
-        public UpdateProductHandler(IGenericRepository<Product> productRepository, IMapper mapper)
+        public UpdateProductHandler(IProductRepository productRepository, IMapper mapper)
         {
             _productRepository = productRepository;
             _mapper = mapper;

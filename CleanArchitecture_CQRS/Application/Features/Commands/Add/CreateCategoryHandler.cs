@@ -21,8 +21,8 @@ namespace CleanArchitecture_Application.Features.Commands.Add
     public class CreateCategoryHandler : IRequestHandler<CreateCategory, CategoryDto>
     {
         private readonly IMapper _mapper;
-        private readonly IGenericRepository<Category> _categoryRepository;
-        public CreateCategoryHandler(IGenericRepository<Category> categoryRepository, IMapper mapper)
+        private readonly ICategoryRepository _categoryRepository;
+        public CreateCategoryHandler(ICategoryRepository categoryRepository, IMapper mapper)
         {
             _categoryRepository = categoryRepository;
             _mapper = mapper;

@@ -9,6 +9,5 @@ namespace Domain.Entities
         public double Price { get; set; }
         public int Quatity { get; set; }
         public int CategoryId { get; set; }
-
     }
 }

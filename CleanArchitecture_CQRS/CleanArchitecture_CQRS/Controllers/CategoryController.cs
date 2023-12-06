@@ -30,6 +30,7 @@ namespace CleanArchitecture_CQRS.Controllers
             return categories.ToList();
         }
 
+        [Authorize]
         [HttpGet("{categoryId}")]
         public async Task<CategoryDto> GetCategoryByIdAsync(int categoryId)
         {

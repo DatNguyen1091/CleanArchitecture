@@ -2,7 +2,6 @@ using Application;
 using Application.AutoMapper;
 using Application.Interfaces;
 using Application.Middlewares;
-using CleanArchitecture_Application.Features.Commands.Delete;
 using CleanArchitecture_Application.Interfaces;
 using CleanArchitecture_Infrastructure.Repositories;
 using Domain.Entities;
@@ -10,7 +9,6 @@ using FluentValidation.AspNetCore;
 using Infrastructure;
 using Infrastructure.Data;
 using Infrastructure.Repositories;
-using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -87,13 +85,6 @@ builder.Services.AddAuthentication(opt =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
     };
 });
-/*
-.AddFacebook(facebookOptions =>
-{
-    facebookOptions.AppId = "1093647022009727";
-    facebookOptions.AppSecret = "adc72f29d68b5618fdd9e94957f5f595";
-});
-*/
 
 //Config FluentValidation
 builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
@@ -107,14 +98,10 @@ builder.Services.AddAutoMapper(typeof(ApplicationMapper));
 // AddScoped
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 
-// Config MadiatR
-//builder.Services.AddMediatR(typeof(DeleteCategoryHandler));
-//builder.Services.AddMediatR(typeof(DeleteProduct));
-//builder.Services.AddMediatR(typeof(UpdateProduct));
-//builder.Services.AddMediatR(typeof(GetAllProduct));
-//builder.Services.AddMediatR(typeof(GetProductById));
 
 var app = builder.Build();
 
@@ -129,11 +116,11 @@ app.UseHttpsRedirection();
 
 app.UseCors();
 
-//app.UseMiddleware<CheckTokenMiddleware>();
-
 app.UseMiddleware<ExampleMiddleware>();
 
 app.UseAuthentication();
+
+//app.UseMiddleware<CheckTokenMiddleware>();
 
 app.UseAuthorization();
 

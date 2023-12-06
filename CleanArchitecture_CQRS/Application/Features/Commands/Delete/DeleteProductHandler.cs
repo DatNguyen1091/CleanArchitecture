@@ -12,8 +12,8 @@ namespace CleanArchitecture_Application.Features.Commands.Delete
 
     public class DeleteProductHandler : IRequestHandler<DeleteProduct, int>
     {
-        private readonly IGenericRepository<Product> _productRepository;
-        public DeleteProductHandler(IGenericRepository<Product> productRepository)
+        private readonly IProductRepository _productRepository;
+        public DeleteProductHandler(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }

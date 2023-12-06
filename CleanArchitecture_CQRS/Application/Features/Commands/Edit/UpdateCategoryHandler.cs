@@ -21,9 +21,9 @@ namespace CleanArchitecture_Application.Features.Commands.Edit
 
     public class UpdateCategoryHandler : IRequestHandler<UpdateCategory, CategoryDto>
     {
-        private readonly IGenericRepository<Category> _categoryRepository;
+        private readonly ICategoryRepository _categoryRepository;
         private readonly IMapper _mapper;
-        public UpdateCategoryHandler(IGenericRepository<Category> categoryRepository, IMapper mapper)
+        public UpdateCategoryHandler(ICategoryRepository categoryRepository, IMapper mapper)
         {
             _categoryRepository = categoryRepository;
             _mapper = mapper;

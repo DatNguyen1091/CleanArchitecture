@@ -10,3 +10,5 @@ namespace CleanArchitecture_Application.Interfaces
         public Task<int> DeleteAsync(int id);
     }
 }
+
+

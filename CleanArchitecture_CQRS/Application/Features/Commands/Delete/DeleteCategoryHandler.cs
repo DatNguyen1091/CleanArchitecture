@@ -12,8 +12,8 @@ namespace CleanArchitecture_Application.Features.Commands.Delete
 
     public class DeleteCategoryHandler : IRequestHandler<DeleteCategory, int>
     {
-        private readonly IGenericRepository<Category> _categoryRepository;
-        public DeleteCategoryHandler(IGenericRepository<Category> categoryRepository)
+        private readonly ICategoryRepository _categoryRepository;
+        public DeleteCategoryHandler(ICategoryRepository categoryRepository)
         {
             _categoryRepository = categoryRepository;
         }

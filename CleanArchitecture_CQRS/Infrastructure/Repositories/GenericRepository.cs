@@ -1,5 +1,4 @@
-﻿
-using CleanArchitecture_Application.Interfaces;
+﻿using CleanArchitecture_Application.Interfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,7 +23,7 @@ namespace CleanArchitecture_Infrastructure.Repositories
             var model = await _context.Set<T>().FindAsync(id);
             if (model == null)
             {
-                return default(T)!;
+                return default!;
             }
 
             return model;
@@ -50,7 +49,8 @@ namespace CleanArchitecture_Infrastructure.Repositories
             if (model != null)
             {
                 _context.Set<T>().Remove(model);
-                return await _context.SaveChangesAsync();
+                var deletedCount = await _context.SaveChangesAsync();
+                return deletedCount;
             }
             return 0;
         }
