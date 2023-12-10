@@ -1,10 +1,10 @@
 ﻿
 using Application.Dto;
-using CleanArchitecture_Application.Features.Commands.Add;
-using CleanArchitecture_Application.Features.Commands.Delete;
-using CleanArchitecture_Application.Features.Commands.Edit;
-using CleanArchitecture_Application.Features.Queries.GetAll;
-using CleanArchitecture_Application.Features.Queries.GetById;
+using CleanArchitecture_Application.Features.product.Commands.Add;
+using CleanArchitecture_Application.Features.product.Commands.Delete;
+using CleanArchitecture_Application.Features.product.Commands.Edit;
+using CleanArchitecture_Application.Features.product.Queries.GetAll;
+using CleanArchitecture_Application.Features.product.Queries.GetById;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -38,7 +38,7 @@ namespace CleanArchitecture_CQRS.Controllers
             return product!;
         }
 
-        //[Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ProductDto> AddProductAsync(ProductDto model)
         {
@@ -52,7 +52,7 @@ namespace CleanArchitecture_CQRS.Controllers
             return product;
         }
 
-        //[Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPut("{productId}")]
         public async Task<ProductDto> UpdateProductAsync(int productId, ProductDto model)
         {
@@ -67,7 +67,7 @@ namespace CleanArchitecture_CQRS.Controllers
             return product;
         }
 
-        //[Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{productId}")]
         public async Task<int> DeleteProductAsync(int productId)
         {

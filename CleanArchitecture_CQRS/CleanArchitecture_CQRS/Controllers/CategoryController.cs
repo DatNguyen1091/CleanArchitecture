@@ -1,10 +1,12 @@
 ﻿
 using Application.Dto;
-using CleanArchitecture_Application.Features.Commands.Add;
-using CleanArchitecture_Application.Features.Commands.Delete;
-using CleanArchitecture_Application.Features.Commands.Edit;
-using CleanArchitecture_Application.Features.Queries.GetAll;
-using CleanArchitecture_Application.Features.Queries.GetById;
+using CleanArchitecture_Application.Dto;
+using CleanArchitecture_Application.Features.Categories.Commands.Add;
+using CleanArchitecture_Application.Features.Categories.Commands.Delete;
+using CleanArchitecture_Application.Features.Categories.Commands.Edit;
+using CleanArchitecture_Application.Features.Categories.Queries.GetAll;
+using CleanArchitecture_Application.Features.Categories.Queries.GetById;
+using CleanArchitecture_Application.Features.Categories.Queries.GetByIdProduct;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -30,7 +32,6 @@ namespace CleanArchitecture_CQRS.Controllers
             return categories.ToList();
         }
 
-        [Authorize]
         [HttpGet("{categoryId}")]
         public async Task<CategoryDto> GetCategoryByIdAsync(int categoryId)
         {
@@ -39,6 +40,7 @@ namespace CleanArchitecture_CQRS.Controllers
             return category!;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<CategoryDto> AddCategoryAsync(CategoryDto model)
         {
@@ -49,6 +51,7 @@ namespace CleanArchitecture_CQRS.Controllers
             return category!;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("{categoryId}")]
         public async Task<CategoryDto> UpdateCategoryAsync(int categoryId, CategoryDto model)
         {
@@ -60,10 +63,19 @@ namespace CleanArchitecture_CQRS.Controllers
             return category!;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{categoryId}")]
         public async Task<int> DeleteCategoryAsync(int categoryId)
         {
             return await _mediator.Send(new DeleteCategory() { CategoryId = categoryId });
+        }
+
+        [HttpGet("Eager/{categoryId}")]
+        public async Task<CategoryProductDto> GetCategoryByIdProductAsync(int categoryId)
+        {
+            var category = await _mediator.Send(new GetByIdProduct() { CategoryId = categoryId });
+
+            return category!;
         }
     }
 }

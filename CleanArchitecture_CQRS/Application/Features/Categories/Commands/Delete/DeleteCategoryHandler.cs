@@ -1,9 +1,8 @@
-﻿
-using CleanArchitecture_Application.Interfaces;
+﻿using CleanArchitecture_Application.Interfaces;
 using Domain.Entities;
 using MediatR;
 
-namespace CleanArchitecture_Application.Features.Commands.Delete
+namespace CleanArchitecture_Application.Features.Categories.Commands.Delete
 {
     public class DeleteCategory : IRequest<int>
     {

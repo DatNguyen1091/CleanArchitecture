@@ -5,7 +5,7 @@ using CleanArchitecture_Application.Interfaces;
 using Domain.Entities;
 using MediatR;
 
-namespace CleanArchitecture_Application.Features.Queries.GetAll
+namespace CleanArchitecture_Application.Features.product.Queries.GetAll
 {
 
     public class GetAllProduct : IRequest<ICollection<ProductDto>>
