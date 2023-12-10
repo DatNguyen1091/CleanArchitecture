@@ -4,7 +4,7 @@ using AutoMapper;
 using CleanArchitecture_Application.Interfaces;
 using MediatR;
 
-namespace CleanArchitecture_Application.Features.Queries.GetById
+namespace CleanArchitecture_Application.Features.Categories.Queries.GetById
 {
     public class GetCategoryById : IRequest<CategoryDto>
     {

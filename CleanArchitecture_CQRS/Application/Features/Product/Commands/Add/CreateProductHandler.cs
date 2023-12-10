@@ -1,11 +1,10 @@
 ﻿using Application.Dto;
-using Application.Interfaces;
+using Domain.Entities;
 using AutoMapper;
 using CleanArchitecture_Application.Interfaces;
-using Domain.Entities;
 using MediatR;
 
-namespace CleanArchitecture_Application.Features.Commands.Add
+namespace CleanArchitecture_Application.Features.product.Commands.Add
 {
     public class CreateProduct : IRequest<ProductDto>
     {

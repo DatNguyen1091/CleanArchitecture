@@ -5,7 +5,7 @@ using CleanArchitecture_Application.Interfaces;
 using Domain.Entities;
 using MediatR;
 
-namespace CleanArchitecture_Application.Features.Queries.GetById
+namespace CleanArchitecture_Application.Features.product.Queries.GetById
 {
     public class GetProductById : IRequest<ProductDto>
     {

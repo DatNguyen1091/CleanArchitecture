@@ -4,7 +4,7 @@ using CleanArchitecture_Application.Interfaces;
 using Domain.Entities;
 using MediatR;
 
-namespace CleanArchitecture_Application.Features.Commands.Edit
+namespace CleanArchitecture_Application.Features.Categories.Commands.Edit
 {
 
     public class UpdateCategory : IRequest<CategoryDto>

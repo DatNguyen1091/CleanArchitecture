@@ -1,12 +1,10 @@
 ﻿
 using Application.Dto;
-using Application.Interfaces;
 using AutoMapper;
 using CleanArchitecture_Application.Interfaces;
-using Domain.Entities;
 using MediatR;
 
-namespace CleanArchitecture_Application.Features.Queries.GetAll
+namespace CleanArchitecture_Application.Features.Categories.Queries.GetAll
 {
 
     public class GetAllCategory : IRequest<ICollection<CategoryDto>>
